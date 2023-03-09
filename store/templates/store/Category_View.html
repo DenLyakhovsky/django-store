@@ -1,0 +1,93 @@
+
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/category.css' %}">
+
+    <title>Categories</title>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <a class="header__logo">Style</a>
+
+            <nav class="nav">
+                <a class="nav__link" href="{% url 'categories_page' %}"><span>Categories</span></a>
+                <a class="nav__link" href="{% url 'home_page' %}">Back to main</a>
+            </nav>
+
+        </div>
+    </div>
+</header>
+
+
+<div class="content">
+    <div class="container">
+        <div class="content-holder">
+            <div class="content-info">
+                {% block sidebar %}
+                {% include 'include/_sidebar.html' %}
+                {% endblock %}
+            </div>
+
+            <div class="row">
+                {% for categor in category %}
+                <div class="col-sm-6">
+
+                    {% if categor.image %}
+                    <img src="{{ categor.image.url }}" alt="" width="150" class="mr-3">
+                    {% endif %}
+
+                    <div class="media-body">
+                        <h5 class="card-title">{{ categor.title }}</h5>
+                        <p class="card-text">{{ categor.content}}</p>
+                        <a href="{% url 'detail_page' categor.pk %}" class="btn btn-secondary">Переглянути</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block nav %}
+    {% if page_obj.has_other_pages %}
+        <nav aria-label="...">
+            <ui class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Prev</a>
+                    </li>
+                {% endif %}
+                {% for p in page_obj.paginator.page_range %}
+                    {% if page_obj.number == p %}
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+                        </li>
+                    {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                {% endif %}
+            </ui>
+        </nav>
+    {% endif %}
+{% endblock %}
+
+</body>
+</html>

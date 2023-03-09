@@ -1,0 +1,60 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+
+    <title></title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+          <div class="header__inner">
+              <div class="header__logo">Style</div>
+
+              <nav class="nav">
+                  <a class="nav__link" href="{% url 'home_page' %}">HOME</a>
+              </nav>
+          </div>
+      </div>
+    </header>
+
+    <div class="detail">
+        <div class="container">
+
+            <div class="detail-holder">
+                <div class="detail-left">
+                    {% if detail_category.image %}
+                    <img src="{{ detail_category.image.url }}" alt="none" width="300">
+                    {% endif %}
+
+                    <div class="detail-price">{{ detail_category.price }} грн</div>
+                    
+                </div>
+
+                <div class="detail-right">
+                    <div class="detail-title">{{ detail_category.title }}</div>
+
+                    <p class="detail-content">{{ detail_category.content }}</p>
+
+                    <div class="detail-button">
+                        <a href="{% url 'payment_page' %}" class="btn btn-secondary">Купити</a>
+                    </div>
+                </div>
+            </div>
+        </div>     
+        
+
+        
+      </div>
+
+    </div>
+
+  </body>
+</html>

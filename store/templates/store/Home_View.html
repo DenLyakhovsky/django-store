@@ -1,0 +1,84 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+    <title>Main</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+          <div class="header__inner">
+              <div class="header__logo">Style</div>
+  
+              <nav class="nav">
+                  <a class="nav__link" href="{% url 'categories_page' %}">Categories</a>
+                  <a class="nav__link"><span>You are hot</span></a>
+              </nav>
+          </div>
+      </div>
+    </header>
+  
+  
+    <div class="intro">
+      <div class="container">
+          <div class="intro__inner">
+              <h1 class="intro__title">Welcome <br> to Style</h1>
+          </div>
+      </div>
+    </div>
+  
+  
+    <div class="section">
+      <div class="container">
+  
+          <div class="section__header">
+              <h3 class="section__subtitle">↓ See below ↓ <br> OMG who you are???7?</h3>
+              <h2 class="section__text">Hello and welcome to the Los pollos hermanos family. My name is Gustavo but you
+                  can call me Gus</h2>
+  
+          </div>
+      </div>
+    </div>
+  
+  
+    <div class="card mb-3">
+      <div class="card-header">Новинки</div>
+      <div class="card-body">
+          <div class="container">
+              {% for hom in home reversed %}
+              <div class="media">
+                  {% if hom.image %}
+                  <img src="{{ hom.image.url }}" alt="" width="200" class="mr-3">
+                  {% endif %}
+                  <div class="media-body">
+                      <h5 class="card-title">{{ hom.title }}</h5>
+                      <p class="card-text">{{ hom.content }}</p>
+                      <a href="{% url 'detail_page' hom.pk %}" class="btn btn-secondary">Більше</a>
+                  </div>
+              </div>
+              {% endfor %}
+          </div>
+      </div>
+    </div>
+  
+  
+    <div class="history">
+      <div class="container">
+      
+          <div class="history-title">
+              Перейти до категорій <br>
+              <a href="{% url 'categories_page' %}">Перейти</a>
+          </div>
+      </div>
+    </div>
+
+  </body>
+</html>

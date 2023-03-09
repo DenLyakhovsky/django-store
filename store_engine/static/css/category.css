@@ -1,0 +1,99 @@
+/* Header  */
+.header {
+    width: 100%;
+    padding-top: 15px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 100px;
+}
+
+.header__logo {
+    font-size: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+}
+
+.row{
+    padding-left: 72px;
+}
+
+
+
+/* Nav  */
+.nav{
+    font-size: 14px;
+    text-transform: uppercase;
+
+}
+.nav__link{
+    display: inline-block; /* щоб вони ішли всі в строку */
+    vertical-align: top;   /* і можна було здати якийсь margin */
+    margin: 0 10px;
+    color: black;
+    text-decoration: none;
+
+    transition: color .2s linear ;
+}
+
+.nav__link span {
+    color: rgb(111, 23, 113);
+    text-decoration:underline;
+}
+
+.nav__link:hover{
+    color: red;
+}
+
+
+
+.content-images {
+    text-align: center;
+    justify-content: space-between;
+    box-sizing: content-box;
+    width: 100%;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.content-holder{
+    display: flex;
+    margin-top: 100px;
+}
+
+.col-sm-6{
+    padding-bottom: 40px;
+}
+
+.row {
+    margin-left: 41px;
+    margin-top: 60px;
+
+}
+
+
+
+
+.pagination{
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    justify-content: center;
+    margin-left: 100;
+}
+
+
+
+
+
+
